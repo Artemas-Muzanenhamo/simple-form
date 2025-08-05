@@ -7,9 +7,28 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<div>
-  <button type="button" class="btn btn-primary">Primary</button>
+
+<div class="container row">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-control">
+    <div class="mb-lg-4 col">
+      <label>Name:</label>
+      <input formControlName="name" />
+      <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+        Name is required.
+      </div>
+    </div>
+
+    <div class="mb-lg-4 col">
+      <label>Age:</label>
+      <input type="number" formControlName="age" />
+      <div *ngIf="form.get('age')?.invalid && form.get('age')?.touched">
+        Age must be a positive number.
+      </div>
+    </div>
+    <button class="btn btn-outline-success" type="submit">Submit</button>
+  </form>
 </div>
+
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
